@@ -214,6 +214,47 @@
   color: var(--peach);
 }
 
+/* Bouton "Ouvrir le livre" placé en bas à droite de la couverture pour inviter au feuilletage */
+.cover-turn-hint {
+  position: absolute;
+  right: 52px;
+  bottom: 48px;
+  z-index: 10;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border: 1px solid rgba(255, 249, 239, 0.75);
+  background: rgba(25, 23, 22, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff9ef;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.cover-turn-hint span {
+  font-size: 15px;
+  margin-left: 0;
+  color: var(--peach);
+  transition: transform 0.2s ease;
+}
+
+.cover-turn-hint:hover {
+  background: rgba(25, 23, 22, 0.9);
+  border-color: #fff9ef;
+  transform: translateX(3px);
+}
+
+.cover-turn-hint:hover span {
+  transform: translateX(4px);
+}
+
 .cover-footer {
   display: none;
 }
@@ -230,9 +271,6 @@
   }
   .cover-rule {
     margin: 16px 0;
-  }
-  .cover-content .open-book {
-    margin-top: 22px;
   }
 }
 
@@ -288,7 +326,12 @@
     font-size: 23px;
   }
 
-  .cover-content .open-book {
-    margin-top: 24px;
+  .cover-turn-hint {
+    right: 28px;
+    bottom: 28px;
+    padding: 11px 18px;
+    font-size: 11px;
+    gap: 8px;
   }
 }
+

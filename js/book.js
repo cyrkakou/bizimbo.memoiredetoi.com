@@ -16,9 +16,10 @@
     document.body.classList.toggle('reading-page', !isCover);
     $sidebar.toggleClass('is-visible', !isCover);
 
-    /* Aucun bouton retour sur la couverture ; pas de bouton suivant sur la dernière page */
+    /* Aucun bouton retour sur la couverture ; pas de bouton suivant sur la couverture ni sur la dernière page */
     $prevBtn.toggleClass('is-hidden', isCover).prop('disabled', isCover);
-    $nextBtn.toggleClass('is-hidden', isLast).prop('disabled', isLast);
+    var hideNext = isCover || isLast;
+    $nextBtn.toggleClass('is-hidden', hideNext).prop('disabled', hideNext);
 
     /* Chapitre actif dans la sidebar (data-page-target="1..4" correspond à turnPage 2..5) */
     var chapterIndex = turnPage - 1;
