@@ -57,3 +57,4 @@ Nous prendrons soin de Maman. Nous continuerons de marcher dans l'unité et la f
 Va en paix. Tu n'as pas vécu en vain.  
 Va et vois ce que Dieu fera pour nous.  
 Va et vois ce qu'il fera de nous.
+
