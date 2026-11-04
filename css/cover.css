@@ -96,22 +96,19 @@
   display: none;
 }
 
-/* Photo de couverture : placement élégant sur la droite en desktop pour équilibrer avec le texte */
+/* La photo reste intacte : aucun voile, aucun filtre, opacité 1 */
 .cover-portrait {
   position: absolute;
   z-index: 1;
-  right: 7vw;
-  top: 50%;
-  transform: translateY(-50%);
-  width: auto;
-  max-width: 42vw;
-  height: clamp(480px, 78vh, 760px);
-  object-fit: contain;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 26%;
   mix-blend-mode: normal;
   opacity: 1;
   filter: none;
-  border-radius: 6px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
 }
 
 .cover-ribbon,
@@ -292,35 +289,27 @@
   }
 
   .cover-portrait {
-    position: absolute;
-    top: 96px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: auto;
-    max-width: min(74vw, 300px);
-    height: 42vh;
-    max-height: 360px;
-    object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    object-position: 58% center;
+    opacity: 1;
   }
 
   .cover-ribbon {
-    left: 24px;
-    top: 24px;
+    left: 10vw;
   }
 
   .cover-ornament {
-    right: 24px;
-    top: 22px;
+    right: 28px;
   }
 
   .cover-content {
-    left: 28px;
-    right: 28px;
+    left: 9vw;
+    right: 9vw;
     top: auto;
-    bottom: 84px;
+    bottom: 15%;
     width: auto;
     transform: none;
   }
