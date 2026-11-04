@@ -1,6 +1,6 @@
 # Lettre d'adieu à Papa
 
-*En mémoire de Kakou Djidji (1946 – 2024)*
+*En mémoire de Kakou Djidji (1946 – 25 septembre 2024)*
 
 ---
 
