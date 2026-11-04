@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "gpt_styles.css"
+        ],
+        "createdAt": "2026-11-04T12:20:19.964Z",
+        "reason": "Decorative sunrise illustration in the memorial memory card, not an interface glow or interaction cue."
+      },
+      {
+        "rule": "all-caps-body",
+        "value": "*",
+        "files": [
+          "gpt_styles.css"
+        ],
+        "createdAt": "2026-11-04T12:22:08.403Z",
+        "reason": "Only short navigation and section labels use uppercase; there are no long uppercase body passages."
+      }
+    ]
+  }
+}

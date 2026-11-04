@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIZIMBO · Le livre mémoire</title>
+  <link rel="stylesheet" href="gpt_book.css" />
+  <link rel="stylesheet" href="gpt_book_tweaks.css" />
+</head>
+<body>
+  <header class="reader-bar">
+    <a class="reader-brand" href="#cover"><span class="brand-mark">✦</span><span>Mémoire de toi</span></a>
+    <button class="family-entry" data-modal="private-modal">Espace familial <span>↗</span></button>
+  </header>
+
+  <main class="book-stage" id="book-stage">
+    <button class="page-control page-prev" id="prev-page" aria-label="Page précédente">←</button>
+    <section class="book" id="memory-book" aria-label="Livre mémoire de BIZIMBO">
+      <article class="book-page cover-page active" data-page="0" id="cover">
+        <img class="cover-portrait" src="assets/gpt_bizimbo-hero.png" alt="Portrait provisoire de BIZIMBO" />
+        <div class="cover-ribbon">Un livre pour se souvenir</div><div class="cover-ornament">✦</div>
+        <div class="cover-content"><h1>BIZIMBO</h1><p class="cover-real-name">Kakou Djidji</p><div class="cover-rule"></div><p class="cover-dates">1946 <span>·</span> 2025</p><p class="cover-place">Akalékro · Côte d’Ivoire</p><button class="open-book" id="open-book">Ouvrir le livre <span>→</span></button></div>
+        <div class="cover-footer"><span>À la mémoire d’un père, d’un repère et d’une histoire.</span><span>01</span></div>
+      </article>
+      <article class="book-page paper-page" data-page="1"><span class="page-label">Chapitre I · Les origines</span><div class="page-inner intro-page"><div class="page-copy"><span class="drop-cap">B</span><p>IZIMBO est né à Akalékro, le 1er janvier 1946. Il portait en lui deux héritages, Ahizi par son père et Sénoufo par sa mère, deux courants de mémoire qui ont nourri son regard sur le monde.</p><p>Son histoire commence dans une terre de liens, de récits et de visages connus. C’est là qu’il a appris que l’on ne grandit jamais seul.</p></div><div class="page-image"><img src="assets/gpt_bizimbo-portrait.png" alt="Portrait de BIZIMBO" /></div></div><span class="page-number">02</span></article>
+      <article class="book-page paper-page" data-page="2"><span class="page-label">Chapitre II · Les traces</span><div class="page-inner traces-page"><div class="traces-art"><div class="art-shape art-one"></div><div class="art-shape art-two"></div><div class="art-star">✦</div><p>Les jours simples<br>deviennent des trésors.</p></div><div class="traces-copy"><h2>Ce qu’il nous laisse.</h2><p class="lead-copy">Une voix, un sourire, une manière de faire une place à chacun.</p><div class="memory-list"><button class="memory-row" data-ritual="candle"><b>◒</b><span><strong id="candle-count">24</strong><small>bougies allumées</small></span><i>Ajouter votre lumière</i></button><button class="memory-row" data-ritual="flower"><b>✿</b><span><strong id="flower-count">18</strong><small>fleurs déposées</small></span><i>Déposer une fleur</i></button><button class="memory-row" data-modal="message-modal"><b>✎</b><span><strong>27</strong><small>mots dans le livre d’or</small></span><i>Écrire un souvenir</i></button></div></div></div><span class="page-number">03</span></article>
+      <article class="book-page paper-page" data-page="3"><span class="page-label">Chapitre III · Les voix</span><div class="guest-page"><div><h2>Les mots restent.</h2><p class="lead-copy">Chaque hommage est une page ajoutée à son histoire.</p></div><div class="quotes"><div><q>Ton sourire reste notre lumière. Merci pour tout ce que tu nous as transmis, papa.</q><strong>Aïcha</strong><small>Il y a 2 jours</small></div><div><q>Je me souviens de ta patience et de tes histoires. Elles vivent encore dans nos conversations.</q><strong>Koffi</strong><small>Il y a 5 jours</small></div></div><button class="ink-button" data-modal="message-modal">Écrire dans le livre d’or <span>↗</span></button></div><span class="page-number">04</span></article>
+      <article class="book-page paper-page family-page" data-page="4"><span class="page-label">Dernière page · Pour les proches</span><div class="family-copy"><div class="back-symbol">✦</div><h2>Le livre continue avec vous.</h2><p class="lead-copy">Ajoutez des photos, enrichissez la biographie et préservez les souvenirs dans un espace familial privé.</p><button class="ink-button" data-modal="private-modal">Entrer dans l’espace familial <span>↗</span></button></div><div class="family-note">À ceux qui restent,<br>à ceux qui se souviennent,<br>à ceux qui transmettent.</div><span class="page-number">05</span></article>
+    </section>
+    <button class="page-control page-next" id="next-page" aria-label="Page suivante">→</button>
+    <nav class="chapter-sidebar" id="chapter-sidebar" aria-label="Navigation entre les chapitres">
+      <span class="chapter-sidebar-title">Dans le livre</span>
+      <button type="button" data-page-target="1">Les origines</button>
+      <button type="button" data-page-target="2">Les traces</button>
+      <button type="button" data-page-target="3">Les voix</button>
+      <button type="button" data-page-target="4">Pour les proches</button>
+    </nav>
+  </main>
+
+  <div class="modal-backdrop" id="message-modal" role="dialog" aria-modal="true"><div class="modal"><button class="modal-close" aria-label="Fermer">×</button><span class="page-label">Livre d’or</span><h2>Déposer un message</h2><p>Votre hommage sera transmis à la famille pour validation.</p><form data-form="message"><label>Votre prénom<input required name="name" placeholder="Ex. Aïcha" /></label><label>Votre message<textarea required name="message" rows="4" placeholder="Un souvenir, une pensée..."></textarea></label><button class="ink-button" type="submit">Envoyer pour validation</button></form></div></div>
+  <div class="modal-backdrop" id="private-modal" role="dialog" aria-modal="true"><div class="modal"><button class="modal-close" aria-label="Fermer">×</button><span class="page-label">Espace familial</span><h2>Entrer avec une invitation</h2><p>Recevez un lien unique par email pour accéder à l’espace privé de la famille.</p><form data-form="invite"><label>Votre adresse email<input required type="email" name="email" placeholder="vous@exemple.com" /></label><button class="ink-button" type="submit">Recevoir mon invitation</button></form></div></div>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+  <script src="gpt_book.js"></script>
+</body>
+</html>

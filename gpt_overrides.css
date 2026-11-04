@@ -1,0 +1,15 @@
+:root{--paper:#f5f8f3;--cream:#edf3ee;--muted:#596963;--sage-deep:#557765;--rose:#b86f63;--line:rgba(37,51,49,.16)}
+.family-banner p{color:#3f5d4d}
+.message-meta span,.moderation-note,.hero-meta,.date-card span{color:var(--muted)}
+.date-card .date-label{font-size:11px}
+.ritual-button small{font-size:12px}
+.footer-note{font-size:12px}
+*,*::before,*::after{box-shadow:none!important;text-shadow:none!important}
+.portrait-halo{background:#efd1c2;opacity:1}
+.memory-sunrise{background:#e9bea8}
+.memory-sunrise:after{background:#f6d7a8;box-shadow:none}
+.memory-fabric{background:#b7cbb9}
+.site-header{backdrop-filter:none}
+.modal-backdrop{backdrop-filter:none}
+.avatar-rose{color:#7f3e35}
+.avatar-sage{color:#3e5a4a}
