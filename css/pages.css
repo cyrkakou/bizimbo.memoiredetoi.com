@@ -142,18 +142,21 @@
 
 .page-image {
   width: 100%;
-  height: min(68dvh, 540px);
-  max-height: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  max-height: calc(100dvh - 190px);
   background: var(--peach);
   border: 1px solid var(--line);
   overflow: hidden;
+  align-self: start;
 }
 
 .page-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 18%;
   display: block;
 }
 
