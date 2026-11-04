@@ -17,7 +17,7 @@
 .paper-sheet {
   width: 100%;
   height: 100%;
-  padding: 112px 72px 56px 76px;
+  padding: 126px 72px 56px 76px;
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr);
   column-gap: 56px;
@@ -27,7 +27,7 @@
 .chapter-rail {
   grid-column: 1;
   width: 200px;
-  padding-top: 4px;
+  padding-top: 0;
 }
 
 .page-label {
@@ -47,7 +47,7 @@
 .chapter-sidebar {
   position: absolute;
   left: 76px;
-  top: 168px;
+  top: 182px;
   width: 200px;
   z-index: 21;
   display: flex;
@@ -861,7 +861,7 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 1100px) and (min-width: 851px) {
   .paper-sheet {
-    padding: 104px 56px 48px 64px;
+    padding: 126px 56px 48px 64px;
     grid-template-columns: 170px minmax(0, 1fr);
     column-gap: 36px;
   }
@@ -873,6 +873,7 @@
 
   .chapter-sidebar {
     left: 64px;
+    top: 182px;
   }
 }
 
