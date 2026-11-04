@@ -458,7 +458,98 @@
 }
 
 /* --------------------------------------------------------------------------
-   Chapitre II · Les traces
+   Chapitre IV · Lettre d’au revoir
+   -------------------------------------------------------------------------- */
+.letter-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  height: 100%;
+}
+
+.letter-sheet-box {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 34px 42px;
+  position: relative;
+}
+
+.letter-sheet-box::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(46, 48, 47, 0.16);
+  pointer-events: none;
+}
+
+.letter-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.letter-salutation {
+  font: italic 22px / 1.35 'Playfair Display', serif;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.letter-body {
+  color: #42524a;
+  font-size: 15.5px;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.letter-body p {
+  margin: 0;
+}
+
+.letter-sign-block {
+  margin-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.letter-sign-text {
+  font-style: italic;
+  font-size: 14px;
+  color: #52645a;
+  max-width: 380px;
+}
+
+.letter-sign-name {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.letter-sign-name strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.letter-sign-name span {
+  font-size: 13px;
+  color: var(--coral);
+}
+
+/* --------------------------------------------------------------------------
+   Chapitre V · Les traces
    -------------------------------------------------------------------------- */
 .traces-page {
   display: grid;
@@ -765,11 +856,32 @@
 
   .intro-page,
   .ceremony-page,
+  .letter-page,
   .traces-page {
     display: flex;
     flex-direction: column;
     gap: 24px;
     height: auto;
+  }
+
+  .letter-sheet-box {
+    padding: 22px 18px;
+  }
+
+  .letter-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .letter-sign-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .letter-sign-name {
+    text-align: left;
   }
 
   .ceremony-card-main {

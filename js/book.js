@@ -5,16 +5,17 @@
   var $brandLink = $('.reader-brand');
   var $sidebar = $('#chapter-sidebar');
   var $sidebarBtns = $sidebar.find('button[data-page-target]');
-  var totalPages = 7;
+  var totalPages = 8;
 
   var pageSlugs = {
     1: 'couverture',
     2: 'biographie',
     3: 'ceremonie',
     4: 'souvenirs',
-    5: 'traces',
-    6: 'voix',
-    7: 'proches'
+    5: 'lettre-aurevoir',
+    6: 'traces',
+    7: 'voix',
+    8: 'proches'
   };
 
   var slugToPage = {
@@ -31,12 +32,17 @@
     'souvenirs': 4,
     'photos': 4,
     'chapitre-3': 4,
-    'traces': 5,
+    'lettre': 5,
+    'lettre-aurevoir': 5,
+    'lettre-d-aurevoir': 5,
+    'aurevoir': 5,
     'chapitre-4': 5,
-    'voix': 6,
+    'traces': 6,
     'chapitre-5': 6,
-    'proches': 7,
-    'chapitre-6': 7
+    'voix': 7,
+    'chapitre-6': 7,
+    'proches': 8,
+    'chapitre-7': 8
   };
 
   function getInitialPage() {
@@ -46,7 +52,7 @@
       if (slugToPage[hash]) {
         return slugToPage[hash];
       }
-      var numMatch = hash.match(/^(?:page-)?([1-7])$/);
+      var numMatch = hash.match(/^(?:page-)?([1-8])$/);
       if (numMatch) {
         var p = parseInt(numMatch[1], 10);
         if (p >= 1 && p <= totalPages) return p;
