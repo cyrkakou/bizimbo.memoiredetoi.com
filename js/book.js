@@ -2,8 +2,6 @@
   'use strict';
 
   var $book = $('#memory-book');
-  var $prevBtn = $('#prev-page');
-  var $nextBtn = $('#next-page');
   var $brandLink = $('.reader-brand');
   var $sidebar = $('#chapter-sidebar');
   var $sidebarBtns = $sidebar.find('button[data-page-target]');
@@ -87,17 +85,11 @@
 
   function syncReaderState(turnPage) {
     var isCover = turnPage === 1;
-    var isLast = turnPage === totalPages;
 
     document.body.classList.toggle('reading-page', !isCover);
     $sidebar.toggleClass('is-visible', !isCover);
 
-    /* Aucun bouton retour sur la couverture ; pas de bouton suivant sur la couverture ni sur la dernière page */
-    $prevBtn.toggleClass('is-hidden', isCover).prop('disabled', isCover);
-    var hideNext = isCover || isLast;
-    $nextBtn.toggleClass('is-hidden', hideNext).prop('disabled', hideNext);
-
-    /* Chapitre actif dans la sidebar (data-page-target="1..4" correspond à turnPage 2..5) */
+    /* Chapitre actif dans la sidebar */
     var chapterIndex = turnPage - 1;
     $sidebarBtns.each(function() {
       var target = parseInt($(this).attr('data-page-target'), 10);
@@ -143,22 +135,6 @@
     event.preventDefault();
     event.stopPropagation();
     $book.turn('page', 2);
-  });
-
-  $prevBtn.on('click', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    if ($book.turn('page') > 1) {
-      $book.turn('previous');
-    }
-  });
-
-  $nextBtn.on('click', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    if ($book.turn('page') < totalPages) {
-      $book.turn('next');
-    }
   });
 
   $brandLink.on('click', function(event) {
