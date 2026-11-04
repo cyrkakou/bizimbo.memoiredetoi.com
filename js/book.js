@@ -12,7 +12,7 @@
     2: 'biographie',
     3: 'ceremonie',
     4: 'souvenirs',
-    5: 'lettre-aurevoir',
+    5: 'lettre-adieu',
     6: 'traces',
     7: 'voix',
     8: 'proches'
@@ -33,6 +33,9 @@
     'photos': 4,
     'chapitre-3': 4,
     'lettre': 5,
+    'lettre-adieu': 5,
+    'lettre-d-adieu': 5,
+    'adieu': 5,
     'lettre-aurevoir': 5,
     'lettre-d-aurevoir': 5,
     'aurevoir': 5,
