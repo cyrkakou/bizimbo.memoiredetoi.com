@@ -1,0 +1,15 @@
+# Clés SSH et certificats
+deploy_key*
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+
+# Fichiers d'environnement
+.env
+.env.*
+
+# Système et logs
+.DS_Store
+Thumbs.db
+*.log
