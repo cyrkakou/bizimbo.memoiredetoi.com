@@ -23,32 +23,42 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}
           TARGET_DIR: ${{ secrets.SSH_TARGET_DIR || '/home/nkankreone/bizimbo.memoiredetoi.com' }}
         run: |
-          # Préparation du répertoire SSH
+          # 1. Préparation du répertoire SSH
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
 
-          # Écriture et sécurisation de la clé privée SSH
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          # 2. Écriture de la clé privée avec saut de ligne garanti et permissions strictes
+          printf '%s\n' "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
-          # Récupération de l'empreinte hôte
+          # 3. Configuration SSH pour compatibilité Namecheap / cPanel (PubkeyAcceptedKeyTypes +ssh-rsa)
+          cat << 'EOF' > ~/.ssh/config
+          Host *
+            StrictHostKeyChecking accept-new
+            PubkeyAcceptedKeyTypes +ssh-rsa
+            HostKeyAlgorithms +ssh-rsa
+            IdentityFile ~/.ssh/deploy_key
+          EOF
+          chmod 600 ~/.ssh/config
+
+          # 4. Enregistrement de l'hôte distant
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
 
-          # Résolution du chemin absolu sur le serveur
+          # 5. Résolution du chemin absolu
           if [[ "$TARGET_DIR" = /* ]]; then
             REMOTE_PATH="$TARGET_DIR"
           else
             REMOTE_PATH="/home/nkankreone/$TARGET_DIR"
           fi
 
-          echo "🚀 Dossier cible de publication : $REMOTE_PATH"
+          echo "🚀 Dossier cible : $REMOTE_PATH"
 
-          # Création du dossier cible distant si nécessaire
-          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new "$SSH_USER@$SSH_HOST" "mkdir -p \"$REMOTE_PATH\""
+          # 6. Test de connexion et création du dossier distant
+          ssh -v -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "mkdir -p \"$REMOTE_PATH\""
 
-          # Synchronisation des fichiers du site
+          # 7. Synchronisation rsync des fichiers
           rsync -avz --delete \
-            -e "ssh -p $SSH_PORT -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new" \
+            -e "ssh -p $SSH_PORT" \
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='*.md' \
