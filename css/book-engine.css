@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Moteur du livre (#book-stage, #memory-book, Turn.js, .page-control)
+   ========================================================================== */
+
+.book-stage {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+#memory-book {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Important : pas de padding ni de inset:!important sur .book-page
+   afin que Turn.js calcule exactement 100vw x 100dvh et pilote le pli diagonal */
+.book-page {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.cover-page.book-page {
+  background: #191716;
+}
+
+/* Verso de la feuille pendant le feuilletage Turn.js */
+#memory-book .turn-page {
+  background-color: var(--paper);
+  overflow: hidden;
+}
+
+#memory-book .cover-page.turn-page {
+  background-color: #191716;
+}
+
+#memory-book .turn-page.p-temporal {
+  background-color: #efeae0;
+  border-left: 1px solid rgba(46, 48, 47, 0.12);
+}
+
+/* Contrôles de navigation (flèches gauche / droite) */
+.page-control {
+  position: absolute;
+  z-index: 22;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 247, 238, 0.4);
+  background: transparent;
+  color: #fbf7ee;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+}
+
+.page-control:hover:not(:disabled) {
+  background: #fbf7ee;
+  color: var(--ink);
+}
+
+.page-control:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.page-control:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.page-control.is-hidden {
+  display: none;
+}
+
+.page-prev {
+  left: 16px;
+}
+
+.page-next {
+  right: 16px;
+}
+
+/* Sur les pages intérieures, les contrôles adoptent le thème papier */
+.reading-page .page-control {
+  color: var(--ink);
+  border-color: var(--line);
+  background: var(--paper);
+}
+
+.reading-page .page-control:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+@media (max-width: 850px) {
+  .page-control {
+    top: auto;
+    bottom: 14px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+
+  .page-prev {
+    left: 20px;
+  }
+
+  .page-next {
+    right: 20px;
+  }
+}

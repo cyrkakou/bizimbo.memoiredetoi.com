@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Modales (Livre d'or & Espace familial) et Notifications Toast
+   ========================================================================== */
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(46, 48, 47, 0.55);
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-backdrop.is-open {
+  display: flex;
+}
+
+.modal {
+  width: min(100%, 500px);
+  background: var(--paper);
+  padding: 38px;
+  border: 1px solid var(--line);
+  position: relative;
+  color: var(--ink);
+}
+
+.modal h2 {
+  font: 400 38px / 1.06 'Playfair Display', serif;
+  letter-spacing: -0.03em;
+  margin: 12px 0 8px;
+}
+
+.modal p {
+  color: #52645a;
+  font-size: 14px;
+  margin: 0;
+}
+
+.modal-close {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  color: #52645a;
+}
+
+.modal-close:hover {
+  color: var(--ink);
+}
+
+.modal form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.modal label {
+  display: grid;
+  gap: 7px;
+  color: #52645a;
+  font-size: 12px;
+}
+
+.modal input,
+.modal textarea {
+  border: 1px solid var(--line);
+  background: #fffdf8;
+  color: var(--ink);
+  padding: 12px 14px;
+  font-size: 14px;
+  outline: none;
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: var(--sage-deep);
+}
+
+.modal .ink-button {
+  margin-top: 8px;
+}
+
+.toast {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background: var(--ink);
+  color: #fbf7ee;
+  font-size: 13px;
+  border: 1px solid rgba(251, 247, 238, 0.2);
+  z-index: 70;
+}
+
+.toast.show {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 28px 22px;
+  }
+
+  .modal h2 {
+    font-size: 32px;
+  }
+}
