@@ -21,7 +21,7 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
-          TARGET_DIR: ${{ secrets.SSH_TARGET_DIR || 'public_html' }}
+          TARGET_DIR: ${{ secrets.SSH_TARGET_DIR || '/home/nkankreone/bizimbo.memoiredetoi.com' }}
         run: |
           # Préparation du répertoire SSH
           mkdir -p ~/.ssh
@@ -34,8 +34,17 @@ jobs:
           # Récupération de l'empreinte hôte
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
 
+          # Résolution du chemin absolu sur le serveur
+          if [[ "$TARGET_DIR" = /* ]]; then
+            REMOTE_PATH="$TARGET_DIR"
+          else
+            REMOTE_PATH="/home/nkankreone/$TARGET_DIR"
+          fi
+
+          echo "🚀 Dossier cible de publication : $REMOTE_PATH"
+
           # Création du dossier cible distant si nécessaire
-          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new "$SSH_USER@$SSH_HOST" "mkdir -p ~/$TARGET_DIR"
+          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new "$SSH_USER@$SSH_HOST" "mkdir -p \"$REMOTE_PATH\""
 
           # Synchronisation des fichiers du site
           rsync -avz --delete \
@@ -43,6 +52,6 @@ jobs:
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='*.md' \
-            ./ "$SSH_USER@$SSH_HOST:~/$TARGET_DIR/"
+            ./ "$SSH_USER@$SSH_HOST:$REMOTE_PATH/"
 
-          echo "✅ Déploiement terminé avec succès dans ~/$TARGET_DIR !"
+          echo "✅ Déploiement terminé avec succès dans $REMOTE_PATH !"
