@@ -1,0 +1,48 @@
+name: Deploy to Namecheap Shared Hosting
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Namecheap
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via rsync over SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          TARGET_DIR: ${{ secrets.SSH_TARGET_DIR || 'public_html' }}
+        run: |
+          # Préparation du répertoire SSH
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          # Écriture et sécurisation de la clé privée SSH
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # Récupération de l'empreinte hôte
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+          # Création du dossier cible distant si nécessaire
+          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new "$SSH_USER@$SSH_HOST" "mkdir -p ~/$TARGET_DIR"
+
+          # Synchronisation des fichiers du site
+          rsync -avz --delete \
+            -e "ssh -p $SSH_PORT -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new" \
+            --exclude='.git*' \
+            --exclude='.github*' \
+            --exclude='*.md' \
+            ./ "$SSH_USER@$SSH_HOST:~/$TARGET_DIR/"
+
+          echo "✅ Déploiement terminé avec succès dans ~/$TARGET_DIR !"
