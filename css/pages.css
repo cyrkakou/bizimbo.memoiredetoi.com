@@ -350,6 +350,163 @@
   height: 100%;
 }
 
+/* Le salon est une scène complète, indépendante de la mise en page du livre. */
+.paper-sheet.souvenirs-sheet {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  column-gap: 56px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.souvenirs-sheet .souvenirs-page {
+  grid-column: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.souvenirs-sheet .souvenirs-gallery {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  padding: 0;
+  background: #b8885f url('../assets/gpt_salon_souvenirs_vertical.png') center 39% / cover no-repeat;
+  transform-origin: center 28%;
+  transition: transform .65s cubic-bezier(.2, .8, .2, 1), filter .65s ease;
+}
+.souvenirs-sheet .souvenirs-page.is-zoomed .souvenirs-gallery {
+  transform: scale(1.14);
+  filter: saturate(1.03);
+}
+.souvenirs-sheet .wall-photo {
+  position: absolute;
+  max-height: none;
+  filter: drop-shadow(0 3px 4px rgba(46, 26, 12, .45));
+}
+.souvenirs-sheet .wall-photo img { width: 100%; max-height: none; box-shadow: none; }
+/* Reference positions are mapped from the model's wall into its useful area.
+   Borders remain empty: photo content can be linked later by data-frame-id. */
+.souvenirs-hanging-area {
+  position: absolute;
+  left: 15.5%;
+  top: 3%;
+  width: 68%;
+  height: 51%;
+  container-type: size;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.souvenirs-frame-layout {
+  position: relative;
+  /* The model's 955×789 coordinate plane is intentionally smaller than
+     the useful wall area. Each child keeps its own x/y, width and ratio. */
+  width: min(66cqw, 640px);
+  aspect-ratio: 955 / 789;
+  height: auto;
+  flex: none;
+  container-type: inline-size;
+}
+.souvenirs-sheet .wall-slot {
+  left: var(--frame-x);
+  top: var(--frame-y);
+  width: var(--frame-w);
+  height: auto;
+  aspect-ratio: calc(var(--frame-ratio) * 955 / 789);
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  z-index: 2;
+}
+.souvenirs-sheet .wall-slot.wall-slot:first-child {
+  border: 0;
+  border-image: none;
+  background: transparent url('../assets/gpt_frame_empty_wood_9x16.png') center / 100% 100% no-repeat;
+  z-index: 4;
+}
+.souvenirs-sheet .wall-slot--ornate {
+  border: max(5px, 1cqw) solid transparent;
+  border-image: url('../assets/gpt_frame_empty_ornate_gold_horizontal.png') 180 stretch;
+  border-image-width: 12%;
+  background: transparent;
+}
+.souvenirs-sheet .wall-slot--wood { border: max(4px, .9cqw) solid transparent; border-image: url('../assets/gpt_frame_empty_dark_wood_square.png') 180 stretch; border-image-width: 10%; background: transparent; }
+.souvenirs-sheet .wall-slot--gold {
+  border: max(3px, .8cqw) ridge #d1aa5a;
+  background: transparent;
+  box-shadow: none;
+}
+.souvenirs-sheet .wall-slot--dark { border: max(4px, .9cqw) solid transparent; border-image: url('../assets/gpt_frame_empty_dark_wood_square.png') 180 stretch; border-image-width: 10%; background: transparent; }
+.wall-slot-opening { display: block; width: 100%; height: 100%; }
+.photo-viewer-empty {
+  width: min(100%, 420px);
+  aspect-ratio: var(--empty-ratio, .75);
+  margin: auto;
+  border: 12px ridge #99713a;
+  max-height: 65dvh;
+  box-sizing: border-box;
+}
+.souvenirs-sheet .wall-photo--young { background: transparent; border: 0; }
+.souvenirs-sheet .wall-photo--main { width: 19%; left: 40%; top: 17%; z-index: 3; }
+.souvenirs-sheet .wall-photo--01 { width: 12%; left: 19%; top: 19%; z-index: 2; }
+.souvenirs-sheet .wall-photo--02 { width: 7%; left: 31%; top: 8%; z-index: 2; }
+.souvenirs-sheet .wall-photo--03 { width: 7%; left: 44%; top: 3%; z-index: 4; }
+.souvenirs-sheet .wall-photo--04 { width: 6%; left: 54%; top: 8%; z-index: 4; }
+.souvenirs-sheet .wall-photo--05 { width: 10%; left: 62%; top: 9%; z-index: 2; }
+.souvenirs-sheet .wall-photo--06 { width: 9%; left: 79%; top: 18%; z-index: 2; }
+.souvenirs-sheet .wall-photo--07 { width: 6%; left: 20%; top: 35%; z-index: 2; }
+.souvenirs-sheet .wall-photo--08 { width: 8%; left: 28%; top: 35%; z-index: 2; }
+.souvenirs-sheet .wall-photo--09 { width: 9%; left: 19%; top: 43%; z-index: 2; }
+.souvenirs-sheet .wall-photo--10 { width: 5%; left: 32%; top: 43%; z-index: 2; }
+.souvenirs-sheet .wall-photo--11 { width: 8%; left: 63%; top: 33%; z-index: 2; }
+.souvenirs-sheet .wall-photo--12 { width: 5%; left: 75%; top: 34%; z-index: 2; }
+.souvenirs-sheet .wall-photo--13 { width: 8%; left: 70%; top: 43%; z-index: 2; }
+.souvenirs-sheet .wall-photo--14 { width: 5%; left: 83%; top: 42%; z-index: 2; }
+.souvenirs-sheet .wall-photo--15 { width: 6%; left: 33%; top: 21%; z-index: 2; }
+.souvenirs-sheet .wall-photo--16 { width: 7%; left: 72%; top: 24%; z-index: 2; }
+.souvenirs-sheet .wall-photo--17 { width: 5%; left: 23%; top: 5%; z-index: 2; }
+.souvenirs-sheet .wall-photo--18 { width: 6%; left: 72%; top: 5%; z-index: 2; }
+.souvenirs-sheet .wall-photo--19 { width: 5%; left: 37%; top: 45%; z-index: 2; }
+@media (max-width: 600px) {
+  .souvenirs-sheet .souvenirs-gallery { width: 100%; max-height: none; }
+  .souvenirs-sheet .wall-photo--young { padding: 1px; border-width: 2px; }
+}
+
+@media (max-width: 850px) {
+  .paper-sheet.souvenirs-sheet {
+    display: flex;
+    flex-direction: column;
+    padding: 82px 20px 72px;
+    min-height: 0;
+  }
+  .souvenirs-sheet .souvenirs-page {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+  .souvenirs-sheet .souvenirs-gallery {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-position: center 39%;
+  }
+  .souvenirs-hanging-area {
+    left: 4%;
+    width: 92%;
+    top: auto;
+    bottom: 45%;
+    align-items: flex-end;
+  }
+}
+
 .souvenirs-header {
   margin-bottom: 22px;
 }
@@ -371,9 +528,46 @@
 
 .souvenirs-gallery {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  align-items: start;
+  grid-template-columns: .85fr 1.3fr .85fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  align-items: center;
+  justify-items: center;
+  min-height: 0;
+  flex: 1 1 auto;
+  padding: 14px;
+  background: #e8ded1;
+}
+
+.souvenirs-hint, .souvenirs-note { margin: 0 0 8px; color: #4d554c; font-size: 12px; }
+.souvenirs-note { margin: 7px 0 0; }
+.wall-photo { display: block; border: 0; padding: 0; background: transparent; cursor: zoom-in; max-width: 100%; max-height: 100%; transition: transform .2s ease; }
+.wall-photo:hover { transform: scale(1.035); }
+.wall-photo:focus-visible { outline: 3px solid #574322; outline-offset: 4px; }
+.wall-photo img { display: block; width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 7px 15px rgba(58, 40, 23, .18); }
+.wall-photo--main { grid-column: 2; grid-row: 1 / 3; width: 100%; }
+.wall-photo--round { grid-column: 1; grid-row: 1; width: 76%; }
+.wall-photo--oval { grid-column: 3; grid-row: 1; width: 72%; }
+.wall-photo--tall { grid-column: 3; grid-row: 2; width: 74%; }
+.wall-photo--young { grid-column: 1; grid-row: 2; width: 48%; padding: 6px; background: #9a793f; border: 3px ridge #dbc183; }
+.photo-viewer { position: fixed; inset: 0; width: min(1000px, calc(100vw - 32px)); margin: auto; padding: 32px; border: 0; background: transparent; max-width: 100vw; max-height: 100dvh; overflow: visible; }
+.photo-viewer::backdrop { background: rgba(20, 17, 14, .88); }
+.photo-viewer-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr); gap: 28px; align-items: center; }
+.photo-viewer-image img { display: block; max-width: 100%; max-height: 78dvh; object-fit: contain; }
+.photo-viewer-copy { max-width: 320px; color: #fffaf1; }
+.photo-viewer-kicker { display: block; margin-bottom: 12px; color: #e7c49d; font: 600 11px/1.2 'Inter', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+.photo-viewer-title { margin: 0 0 14px; font: 400 clamp(28px, 4vw, 44px)/1.05 'Playfair Display', serif; }
+.photo-viewer-description { margin: 0; color: rgba(255, 250, 241, .78); font: 400 16px/1.6 'Inter', sans-serif; }
+.photo-viewer-close { position: absolute; top: 0; right: 0; width: 40px; height: 40px; border: 0; background: #fffaf1; color: #251f19; font-size: 30px; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .wall-photo { transition: none; } }
+@media (max-width: 700px) {
+  .photo-viewer { width: calc(100vw - 24px); padding: 24px; }
+  .photo-viewer-layout { grid-template-columns: 1fr; gap: 16px; }
+  .photo-viewer-copy { max-width: none; }
+  .photo-viewer-image img { max-height: 58dvh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .souvenirs-sheet .souvenirs-gallery { transition: none; }
 }
 
 .souvenir-card {
@@ -991,8 +1185,9 @@
   }
 
   .souvenirs-gallery {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: .85fr 1.3fr .85fr;
+    gap: 8px;
+    padding: 10px;
   }
 
   .souvenir-photo {

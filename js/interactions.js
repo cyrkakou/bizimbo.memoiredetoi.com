@@ -3,6 +3,48 @@
 
   var toast = document.querySelector('.toast');
   var toastTimer;
+  var photoViewer = document.querySelector('.photo-viewer');
+  var photoViewerImage = photoViewer && photoViewer.querySelector('img');
+  var photoViewerTitle = photoViewer && photoViewer.querySelector('.photo-viewer-title');
+  var photoViewerDescription = photoViewer && photoViewer.querySelector('.photo-viewer-description');
+  var souvenirsPage = document.querySelector('.souvenirs-page');
+  var lastPhotoButton;
+
+  document.addEventListener('click', function(event) {
+    var photoButton = event.target.closest('[data-photo-view]');
+    if (photoButton && photoViewer) {
+      event.preventDefault();
+      event.stopPropagation();
+      var image = photoButton.querySelector('img');
+      lastPhotoButton = photoButton;
+      var emptyFrame = photoViewer.querySelector('.photo-viewer-empty');
+      if (emptyFrame) emptyFrame.remove();
+      photoViewerImage.hidden = !image;
+      photoViewerImage.style.display = image ? '' : 'none';
+      if (image) {
+        photoViewerImage.src = image.src;
+        photoViewerImage.alt = image.alt;
+      } else {
+        emptyFrame = document.createElement('div');
+        emptyFrame.className = 'photo-viewer-empty';
+        emptyFrame.setAttribute('aria-label', 'Cadre vide, photo à associer');
+        var bounds = photoButton.getBoundingClientRect();
+        emptyFrame.style.setProperty('--empty-ratio', bounds.width / bounds.height);
+        photoViewerImage.parentNode.appendChild(emptyFrame);
+      }
+      if (photoViewerTitle) photoViewerTitle.textContent = photoButton.dataset.title || (image ? image.alt : 'Cadre');
+      if (photoViewerDescription) photoViewerDescription.textContent = photoButton.dataset.description || '';
+      if (souvenirsPage) souvenirsPage.classList.add('is-zoomed');
+      photoViewer.showModal();
+      photoViewer.querySelector('.photo-viewer-close').focus();
+    } else if (photoViewer && (event.target.closest('.photo-viewer-close') || event.target === photoViewer)) {
+      photoViewer.close();
+    }
+  });
+  if (photoViewer) photoViewer.addEventListener('close', function() {
+    if (souvenirsPage) souvenirsPage.classList.remove('is-zoomed');
+    if (lastPhotoButton) lastPhotoButton.focus();
+  });
 
   function showToast(message) {
     if (!toast) return;

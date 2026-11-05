@@ -20,7 +20,10 @@
     <section class="book" id="memory-book" aria-label="Livre mémoire de BIZIMBO">
       <!-- Page 0 : Couverture pleine page (sanctuarisée) -->
       <article class="book-page cover-page" data-page="0" id="cover">
-        <img class="cover-portrait" src="assets/gpt_bizimbo-hero.png" alt="Portrait de BIZIMBO" />
+        <picture class="cover-picture">
+          <source media="(max-width: 850px)" srcset="assets/gpt_bizimbo_hero_mobile.png" />
+          <img class="cover-portrait" src="assets/gpt_bizimbo-hero.png" alt="Portrait de BIZIMBO" />
+        </picture>
         <div class="cover-ribbon">Un livre pour se souvenir</div>
         <div class="cover-ornament">✦</div>
         <div class="cover-content">
@@ -114,54 +117,34 @@
 
       <!-- Page 3 : Chapitre III · Souvenirs -->
       <article class="book-page paper-page" data-page="3">
-        <div class="paper-sheet">
+        <div class="paper-sheet souvenirs-sheet">
           <div class="chapter-rail">
             <span class="page-label">Chapitre III · Souvenirs</span>
           </div>
           <div class="page-main souvenirs-page">
-            <div class="souvenirs-header">
-              <h2>Les instants partagés.</h2>
-              <p class="souvenirs-lead">Des regards, des journées simples et des étapes de vie qui continuent de nous inspirer.</p>
-            </div>
-
-            <div class="souvenirs-gallery">
-              <div class="souvenir-card">
-                <div class="souvenir-photo">
-                  <img class="souvenir-photo-portrait" src="assets/gpt_bizimbo-portrait.png" alt="BIZIMBO souriant" />
-                </div>
-                <div class="souvenir-caption">
-                  <span class="souvenir-date">Akalékro · 1978</span>
-                  <h3>Le sourire confiant</h3>
-                  <p>Un moment de retrouvailles familiales au village, entouré des siens.</p>
-                </div>
-              </div>
-
-              <div class="souvenir-card">
-                <div class="souvenir-photo">
-                  <img class="souvenir-photo-hero" src="assets/gpt_bizimbo-hero.png" alt="BIZIMBO en habit d'apparat" />
-                </div>
-                <div class="souvenir-caption">
-                  <span class="souvenir-date">Abidjan · 1995</span>
-                  <h3>La force tranquille</h3>
-                  <p>Le patriarche lors de la cérémonie des 50 ans, toujours à l’écoute.</p>
-                </div>
-              </div>
-
-              <div class="souvenir-card">
-                <div class="souvenir-photo">
-                  <img src="assets/gpt_bizimbo-portrait.png" alt="Regard de BIZIMBO" />
-                </div>
-                <div class="souvenir-caption">
-                  <span class="souvenir-date">Mémoire vive</span>
-                  <h3>Sous l’arbre à palabres</h3>
-                  <p>Transmettre les proverbes et la sagesse des ancêtres Ahizi et Sénoufo.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="souvenirs-footer-cta">
-              <p>Vous avez une photo ou une archive de BIZIMBO à partager avec la famille ?</p>
-              <button class="ink-button" type="button" data-modal="private-modal">Ajouter une photo dans l’espace familial <span>↗</span></button>
+            <div class="souvenirs-gallery" aria-label="Mur de vingt cadres à personnaliser">
+              <div class="souvenirs-hanging-area"><div class="souvenirs-frame-layout">
+              <button class="wall-photo wall-slot wall-slot--ornate" type="button" data-photo-view data-frame-id="souvenir-01" data-title="Cadre principal" data-description="Photo et description à associer." aria-label="Ouvrir le cadre principal vide" style="--frame-x:29.5288%;--frame-y:29.7845%;--frame-w:43.5602%;--frame-h:70.0887%;--frame-ratio:0.6215"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--ornate" type="button" data-photo-view data-frame-id="souvenir-02" data-title="Cadre 2" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 2" style="--frame-x:0.0000%;--frame-y:15.8428%;--frame-w:23.5602%;--frame-h:27.8834%;--frame-ratio:0.8450"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--wood" type="button" data-photo-view data-frame-id="souvenir-03" data-title="Cadre 3" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 3" style="--frame-x:26.2827%;--frame-y:3.5488%;--frame-w:15.1832%;--frame-h:21.4195%;--frame-ratio:0.7088"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--wood" type="button" data-photo-view data-frame-id="souvenir-04" data-title="Cadre 4" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 4" style="--frame-x:44.8168%;--frame-y:0.0000%;--frame-w:11.0995%;--frame-h:10.7731%;--frame-ratio:1.0303"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-05" data-title="Cadre 5" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 5" style="--frame-x:45.9686%;--frame-y:13.4347%;--frame-w:8.3770%;--frame-h:13.9417%;--frame-ratio:0.6009"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--ornate" type="button" data-photo-view data-frame-id="souvenir-06" data-title="Cadre 6" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 6" style="--frame-x:59.2670%;--frame-y:3.5488%;--frame-w:18.4293%;--frame-h:22.3067%;--frame-ratio:0.8262"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--ornate" type="button" data-photo-view data-frame-id="souvenir-07" data-title="Cadre 7" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 7" style="--frame-x:79.7906%;--frame-y:15.4626%;--frame-w:19.8953%;--frame-h:27.3764%;--frame-ratio:0.7267"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-08" data-title="Cadre 8" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 8" style="--frame-x:1.9895%;--frame-y:46.5146%;--frame-w:8.4817%;--frame-h:14.5754%;--frame-ratio:0.5819"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--wood" type="button" data-photo-view data-frame-id="souvenir-09" data-title="Cadre 9" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 9" style="--frame-x:12.6702%;--frame-y:47.0215%;--frame-w:14.7644%;--frame-h:21.6730%;--frame-ratio:0.6812"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-10" data-title="Cadre 10" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 10" style="--frame-x:2.3037%;--frame-y:63.2446%;--frame-w:8.9005%;--frame-h:8.2383%;--frame-ratio:1.0804"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--ornate" type="button" data-photo-view data-frame-id="souvenir-11" data-title="Cadre 11" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 11" style="--frame-x:1.5707%;--frame-y:73.2573%;--frame-w:15.9162%;--frame-h:22.3067%;--frame-ratio:0.7135"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-12" data-title="Cadre 12" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 12" style="--frame-x:20.2094%;--frame-y:72.2433%;--frame-w:6.9110%;--frame-h:11.7871%;--frame-ratio:0.5863"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-13" data-title="Cadre 13" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 13" style="--frame-x:20.0000%;--frame-y:85.4246%;--frame-w:7.5393%;--frame-h:7.7313%;--frame-ratio:0.9752"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--dark" type="button" data-photo-view data-frame-id="souvenir-14" data-title="Cadre 14" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 14" style="--frame-x:76.1257%;--frame-y:45.8809%;--frame-w:13.6126%;--frame-h:20.1521%;--frame-ratio:0.6755"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-15" data-title="Cadre 15" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 15" style="--frame-x:92.1466%;--frame-y:46.7681%;--frame-w:7.7487%;--frame-h:12.5475%;--frame-ratio:0.6175"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--wood" type="button" data-photo-view data-frame-id="souvenir-16" data-title="Cadre 16" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 16" style="--frame-x:92.7749%;--frame-y:61.8504%;--frame-w:6.8063%;--frame-h:11.0266%;--frame-ratio:0.6173"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--gold" type="button" data-photo-view data-frame-id="souvenir-17" data-title="Cadre 17" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 17" style="--frame-x:76.7539%;--frame-y:68.0608%;--frame-w:14.3455%;--frame-h:15.2091%;--frame-ratio:0.9432"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--wood" type="button" data-photo-view data-frame-id="souvenir-18" data-title="Cadre 18" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 18" style="--frame-x:92.8796%;--frame-y:76.9328%;--frame-w:6.9110%;--frame-h:6.2104%;--frame-ratio:1.1128"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--wood" type="button" data-photo-view data-frame-id="souvenir-19" data-title="Cadre 19" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 19" style="--frame-x:75.8115%;--frame-y:86.1850%;--frame-w:6.2827%;--frame-h:10.6464%;--frame-ratio:0.5901"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              <button class="wall-photo wall-slot wall-slot--dark" type="button" data-photo-view data-frame-id="souvenir-20" data-title="Cadre 20" data-description="Photo et description à associer." aria-label="Ouvrir le cadre vide 20" style="--frame-x:84.3979%;--frame-y:84.2839%;--frame-w:13.1937%;--frame-h:14.5754%;--frame-ratio:0.9052"><span class="wall-slot-opening" aria-hidden="true"></span></button>
+              </div></div>
             </div>
           </div>
         </div>
@@ -407,6 +390,18 @@
       </form>
     </div>
   </div>
+
+  <dialog class="photo-viewer" aria-label="Portrait agrandi">
+    <button class="photo-viewer-close" type="button" aria-label="Fermer le portrait">×</button>
+    <div class="photo-viewer-layout">
+      <div class="photo-viewer-image"><img src="assets/gpt_frame_transparent_square.png" alt="" /></div>
+      <div class="photo-viewer-copy">
+        <span class="photo-viewer-kicker">Souvenir de famille</span>
+        <h2 class="photo-viewer-title"></h2>
+        <p class="photo-viewer-description"></p>
+      </div>
+    </div>
+  </dialog>
 
   <div class="toast" role="status" aria-live="polite"></div>
 

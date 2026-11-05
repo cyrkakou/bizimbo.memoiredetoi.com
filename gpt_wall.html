@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test PictureWall</title>
+  <style>
+    :root { color-scheme: light; font-family: Georgia, serif; background: #f5f0e8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; padding: 24px; display: grid; place-items: center; }
+    .test-shell { width: min(100%, 1500px); }
+    h1 { margin: 0 0 14px; font-size: clamp(22px, 3vw, 38px); font-weight: 400; color: #33251b; }
+    .picture-wall { position: relative; width: 100%; aspect-ratio: 955 / 789; overflow: hidden; background-position: center 39%; background-size: cover; background-repeat: no-repeat; }
+    .picture-wall-layout { position: absolute; left: 15.5%; top: 3%; width: 68%; height: 51%; container-type: size; }
+    .picture-wall-frame { position: absolute; display: block; padding: 0; border: 0; background-color: transparent; background-position: center; background-repeat: no-repeat; background-size: 100% 100%; cursor: zoom-in; }
+    .picture-wall-frame--wood { background-image: url('assets/gpt_frame_empty_wood_9x16.png'); }
+    .picture-wall-frame--ornate { background-image: url('assets/gpt_frame_empty_ornate_gold_horizontal.png'); }
+    .picture-wall-frame--dark { background-image: url('assets/gpt_frame_empty_dark_wood_square.png'); }
+    .picture-wall-frame--gold { border: 5px ridge #d1aa5a; }
+    .picture-wall-frame:focus-visible { outline: 3px solid #fff4ca; outline-offset: 3px; }
+    .picture-wall-photo { position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; object-fit: cover; }
+    dialog { width: min(900px, calc(100vw - 32px)); border: 0; padding: 28px; background: #241a13; color: #fff8ee; }
+    dialog::backdrop { background: rgb(20 14 10 / .84); }
+    .modal-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); gap: 24px; align-items: center; }
+    [data-picture-wall-image] { display: block; max-width: 100%; max-height: 72vh; object-fit: contain; }
+    [data-picture-wall-title] { margin: 0 0 12px; font-size: clamp(24px, 4vw, 44px); font-weight: 400; }
+    [data-picture-wall-description] { margin: 0; line-height: 1.6; color: #e8d7c4; }
+    [data-picture-wall-close] { position: absolute; top: 8px; right: 8px; border: 0; background: transparent; color: #fff8ee; font-size: 28px; cursor: pointer; }
+    @media (max-width: 700px) { body { padding: 12px; } .modal-layout { grid-template-columns: 1fr; } .picture-wall-layout { left: 4%; width: 92%; top: auto; bottom: 45%; } }
+  </style>
+</head>
+<body>
+  <main class="test-shell">
+    <h1>Test du mur de souvenirs</h1>
+    <section class="picture-wall" data-picture-wall aria-label="Mur de souvenirs"></section>
+  </main>
+  <dialog data-picture-wall-modal aria-label="Souvenir agrandi">
+    <button type="button" data-picture-wall-close aria-label="Fermer">×</button>
+    <div class="modal-layout">
+      <div><img data-picture-wall-image alt="" hidden /></div>
+      <div><h2 data-picture-wall-title></h2><p data-picture-wall-description></p></div>
+    </div>
+  </dialog>
+  <script src="gpt_picture-wall.js"></script>
+  <script>
+    new PictureWall('[data-picture-wall]', { dataUrl: 'gpt_picture-wall.json', modal: document.querySelector('[data-picture-wall-modal]') }).init().catch(console.error);
+  </script>
+</body>
+</html>

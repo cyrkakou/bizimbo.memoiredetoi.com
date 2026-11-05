@@ -111,6 +111,17 @@
   filter: none;
 }
 
+.cover-picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 1;
+}
+
+.cover-picture .cover-portrait {
+  position: absolute;
+}
+
 .cover-ribbon,
 .cover-ornament,
 .cover-footer {
@@ -309,21 +320,31 @@
     left: 9vw;
     right: 9vw;
     top: auto;
-    bottom: 15%;
+    bottom: 14%;
     width: auto;
     transform: none;
   }
 
   .cover-content h1 {
-    font-size: clamp(58px, 15vw, 108px);
+    font-size: clamp(48px, 14vw, 72px);
+    line-height: .92;
+    letter-spacing: .02em;
   }
 
   .cover-real-name {
-    font-size: 21px;
+    font-size: clamp(18px, 5.2vw, 23px);
+    margin: 14px 0;
   }
 
+  .cover-rule { margin: 18px 0; }
+
   .cover-dates {
-    font-size: 23px;
+    font-size: clamp(20px, 5.8vw, 27px);
+  }
+
+  .cover-place {
+    font-size: clamp(10px, 2.8vw, 13px);
+    margin-top: 12px;
   }
 
   .cover-turn-hint {

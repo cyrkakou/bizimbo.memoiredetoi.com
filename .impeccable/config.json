@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-11-04T12:22:08.403Z",
         "reason": "Only short navigation and section labels use uppercase; there are no long uppercase body passages."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "css/pages.css"
+        ],
+        "createdAt": "2026-11-05T10:13:46.434Z",
+        "reason": "User confirmed the sidebar active accent must remain unchanged to preserve the established navigation design."
       }
     ]
   }
